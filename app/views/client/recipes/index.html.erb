@@ -1,11 +1,20 @@
+<div class="row">
+  <% @recipes.each do |recipe| %>
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <img src="<%= recipe["image_url"] %>" class="card-img-top" alt="<%= recipe["title"] %>">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/clientrecipes/<%= recipe["id"] %>"><%= recipe["title"] %></a></h5>
+          <p class="card-text">Prep time: <%= recipe["prep_time"] %></p>
+          <p class= "card-text">Ingedients:</p>
+          <ul>
+            <%= recipe["formatted"]["ingredients"].each do |ingredient| %>
+            <li><%= ingredient %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<% @recipes.each do |recipe| %>
-
-  <h1><a href="/client/recipes/<%= recipe["id"] %>"><%= recipe["title"] %></a></h1>
-  <h5>Prep time: <%= recipe["prep_time"] %></h5>
-  <p>Ingredients: <%= recipe["ingredients"] %></p>
-  <p>Directions: <%= recipe["directions"] %></p>
-  <img src="<%= recipe["image_url"] %>" alt="<%= recipe["title"] %>">
-
-  <br>
-<% end %>
